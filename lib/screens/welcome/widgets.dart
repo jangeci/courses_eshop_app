@@ -1,4 +1,5 @@
 import 'package:courses_eshop_app/common/app_box_shadow.dart';
+import 'package:courses_eshop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:courses_eshop_app/widgets/common/text_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ Widget appOnboardingPage(
   required String subtitle,
   required String img,
   required int index,
+  required BuildContext context,
 }) {
   return Column(
     children: [
@@ -24,16 +26,24 @@ Widget appOnboardingPage(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: text16Normal(subtitle),
       ),
-      nextButton(index, controller),
+      const Spacer(),
+      nextButton(index, controller, context),
+      const SizedBox(height: 100),
     ],
   );
 }
 
-Widget nextButton(int index, PageController controller) {
+Widget nextButton(
+  int index,
+  PageController controller,
+  BuildContext context,
+) {
   return GestureDetector(
     onTap: () {
       if (index < 3) {
-        controller.animateToPage(index++, duration: const Duration(milliseconds: 300), curve: Curves.linear);
+        controller.animateToPage(index++, duration: kThemeAnimationDuration, curve: Curves.linear);
+      } else {
+        Navigator.pushNamed(context, SignInScreen.kRoute);
       }
     },
     child: Container(
