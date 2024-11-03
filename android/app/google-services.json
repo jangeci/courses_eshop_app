@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "879940826340",
+    "project_id": "courses-eshop-app",
+    "storage_bucket": "courses-eshop-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879940826340:android:1cf9dfcdf2cc2b1d7568f1",
+        "android_client_info": {
+          "package_name": "com.example.courseseshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2NK3xs6LIDkNQXAS9AW8ykQ1TVH1NFGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
