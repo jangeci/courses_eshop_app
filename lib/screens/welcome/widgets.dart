@@ -1,4 +1,6 @@
 import 'package:courses_eshop_app/common/app_box_shadow.dart';
+import 'package:courses_eshop_app/common/utils/constants.dart';
+import 'package:courses_eshop_app/global.dart';
 import 'package:courses_eshop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:courses_eshop_app/widgets/common/text_widgets.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +45,7 @@ Widget nextButton(
       if (index < 3) {
         controller.animateToPage(index++, duration: kThemeAnimationDuration, curve: Curves.linear);
       } else {
+        Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY, true);
         Navigator.pushNamed(context, SignInScreen.kRoute);
       }
     },

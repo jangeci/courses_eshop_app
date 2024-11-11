@@ -9,6 +9,7 @@ Widget appTextFiled({
   String? hint,
   bool autoFocus = false,
   bool obscureText = false,
+  TextEditingController? controller,
   Function(String val)? onChanged,
 }) {
   return Container(
@@ -35,6 +36,7 @@ Widget appTextFiled({
                 child: Container(
                   height: 50,
                   child: TextField(
+                    controller: controller,
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
                       hintText: hint,
