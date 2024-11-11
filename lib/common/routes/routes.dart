@@ -1,9 +1,9 @@
 import 'package:courses_eshop_app/common/services/storage.dart';
 import 'package:courses_eshop_app/global.dart';
-import 'package:courses_eshop_app/screens/home/home_screen.dart';
-import 'package:courses_eshop_app/screens/sign_in/sign_in_screen.dart';
-import 'package:courses_eshop_app/screens/sign_up/sign_up_screen.dart';
-import 'package:courses_eshop_app/screens/welcome/welcome_screen.dart';
+import 'package:courses_eshop_app/screens/home/view/home_screen.dart';
+import 'package:courses_eshop_app/screens/sign_in/view/sign_in_screen.dart';
+import 'package:courses_eshop_app/screens/sign_up/view/sign_up_screen.dart';
+import 'package:courses_eshop_app/screens/welcome/view/welcome_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

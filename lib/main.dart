@@ -1,7 +1,7 @@
 import 'package:courses_eshop_app/common/routes/routes.dart';
 import 'package:courses_eshop_app/common/utils/app_styles.dart';
 import 'package:courses_eshop_app/global.dart';
-import 'package:courses_eshop_app/screens/welcome/welcome_screen.dart';
+import 'package:courses_eshop_app/screens/welcome/view/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

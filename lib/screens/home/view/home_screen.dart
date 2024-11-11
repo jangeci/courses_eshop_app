@@ -1,8 +1,8 @@
 import 'package:courses_eshop_app/common/app_box_shadow.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/widgets/app_bar.dart';
-import 'package:courses_eshop_app/screens/home/bottom_nav_notifier.dart';
-import 'package:courses_eshop_app/screens/home/widgets.dart';
+import 'package:courses_eshop_app/screens/home/provider/bottom_nav_notifier.dart';
+import 'package:courses_eshop_app/screens/home/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
