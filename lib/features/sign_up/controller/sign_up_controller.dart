@@ -1,17 +1,17 @@
 import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
 import 'package:courses_eshop_app/common/widgets/popup_messages.dart';
-import 'package:courses_eshop_app/screens/sign_up/provider/register_notifier.dart';
+import 'package:courses_eshop_app/features/sign_up/provider/register_notifier.dart';
+import 'package:courses_eshop_app/features/sign_up/repo/sign_up_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignUpController {
-  final WidgetRef ref;
 
-  SignUpController({required this.ref});
+  SignUpController();
 
-  void handleSignUp() async {
+  void handleSignUp(WidgetRef ref) async {
     var state = ref.read(registerNotifierProvider);
     var loadingNotifier = ref.read(appLoaderProvider.notifier);
 
@@ -44,7 +44,7 @@ class SignUpController {
 
     var context = Navigator.of(ref.context);
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      final credential = await SignUpRepo.firebaseSignIn(email, password);
 
       if (kDebugMode) {
         print(credential);

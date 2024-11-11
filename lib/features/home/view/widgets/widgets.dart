@@ -1,7 +1,6 @@
 import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
-import 'package:courses_eshop_app/screens/home/provider/bottom_nav_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

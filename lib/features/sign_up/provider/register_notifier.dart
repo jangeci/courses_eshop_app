@@ -1,4 +1,4 @@
-import 'package:courses_eshop_app/screens/sign_up/provider/register_state.dart';
+import 'package:courses_eshop_app/features/sign_up/provider/register_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'register_notifier.g.dart';

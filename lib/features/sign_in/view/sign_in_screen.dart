@@ -3,42 +3,38 @@ import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/widgets/app_bar.dart';
 import 'package:courses_eshop_app/common/widgets/app_textfield.dart';
+import 'package:courses_eshop_app/features/sign_in/controller/sign_in_controller.dart';
+import 'package:courses_eshop_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:courses_eshop_app/features/sign_in/view/widgets/widgets.dart';
+import 'package:courses_eshop_app/features/sign_up/view/sign_up_screen.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
-import 'package:courses_eshop_app/screens/sign_up/provider/register_notifier.dart';
-import 'package:courses_eshop_app/screens/sign_up/controller/sign_up_controller.dart';
 import 'package:courses_eshop_app/widgets/common/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignUpScreen extends ConsumerStatefulWidget {
-  static const kRoute = '/sign-up';
+class SignInScreen extends ConsumerStatefulWidget {
+  static const kRoute = '/sign-in';
 
-  const SignUpScreen({super.key});
+  const SignInScreen({super.key});
 
   @override
-  ConsumerState<SignUpScreen> createState() => _SignUpScreenState();
+  ConsumerState<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends ConsumerState<SignUpScreen> {
-  late SignUpController _controller;
-
-  @override
-  void initState() {
-    _controller = SignUpController(ref: ref);
-    super.initState();
-  }
+class _SignInScreenState extends ConsumerState<SignInScreen> {
+  final SignInController _controller = SignInController();
 
   @override
   Widget build(BuildContext context) {
-    final regProvider = ref.watch(registerNotifierProvider);
+    final signInProvider = ref.watch(signInNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
 
     return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppbar(title: 'Sign Up'),
+          appBar: buildAppbar(title: 'Login'),
           body: loader
               ? const Center(
                   child: CircularProgressIndicator(
@@ -50,44 +46,48 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 20),
+                      thirdPartyLogin(),
                       Center(
-                        child: text14Normal('Lorem ipsum dolor sit amet'),
+                        child: text14Normal('Or user your email account to login'),
                       ),
                       SizedBox(height: 50),
                       appTextFiled(
-                        hint: 'User name',
-                        text: 'Enter user name',
-                        onChanged: (val) => ref.read(registerNotifierProvider.notifier).onUserNameChange(val),
-                      ),
-                      appTextFiled(
+                        controller: _controller.emailController,
                         text: 'Email',
                         hint: 'Enter email',
                         autoFocus: true,
-                        onChanged: (val) => ref.read(registerNotifierProvider.notifier).onEmailChange(val),
+                        onChanged: (val) => ref.read(signInNotifierProvider.notifier).onEmailChange(val),
                       ),
                       SizedBox(height: 20),
                       appTextFiled(
+                        controller: _controller.passwordController,
                         hint: 'Password',
                         text: 'Password',
                         icon: Assets.icons.lock.path,
                         obscureText: true,
-                        onChanged: (val) => ref.read(registerNotifierProvider.notifier).onPasswordChange(val),
+                        onChanged: (val) => ref.read(signInNotifierProvider.notifier).onPasswordChange(val),
                       ),
                       SizedBox(height: 20),
-                      appTextFiled(
-                        hint: 'Confirm Password',
-                        text: 'Confirm Password',
-                        icon: Assets.icons.lock.path,
-                        obscureText: true,
-                        onChanged: (val) => ref.read(registerNotifierProvider.notifier).onPasswordConfirmChange(val),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: textUnderline('Forgot password'),
                       ),
                       SizedBox(height: 100.h),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: appButton('Sign Up', onTap: () {
-                          _controller.handleSignUp();
-                        }),
+                        child: appButton(
+                          'Login',
+                          onTap: () => _controller.handleSignIn(ref),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: appButton(
+                          onTap: () => Navigator.pushNamed(context, SignUpScreen.kRoute),
+                          'Register',
+                          variant: AppButtonVariant.secondary,
+                        ),
                       ),
                       SizedBox(height: 20),
                     ],

@@ -1,5 +1,5 @@
-import 'package:courses_eshop_app/screens/welcome/provider/welcome_notifier.dart';
-import 'package:courses_eshop_app/screens/welcome/view/widgets/widgets.dart';
+import 'package:courses_eshop_app/features/welcome/provider/welcome_notifier.dart';
+import 'package:courses_eshop_app/features/welcome/view/widgets/widgets.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

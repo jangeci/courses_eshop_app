@@ -1,4 +1,4 @@
-import 'package:courses_eshop_app/screens/sign_in/provider/sign_in_state.dart';
+import 'package:courses_eshop_app/features/sign_in/provider/sign_in_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignInNotifier extends StateNotifier<SignInState> {
