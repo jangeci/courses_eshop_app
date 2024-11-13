@@ -1,7 +1,7 @@
+import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
 import 'package:courses_eshop_app/features/home/controller/home_controller.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:courses_eshop_app/global.dart';
-import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,10 +12,10 @@ class HomeBannerWidget extends StatelessWidget {
   final PageController controller;
 
   const HomeBannerWidget({
-    Key? key,
+    super.key,
     required this.ref,
     required this.controller,
-  }) : super (key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +77,6 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return text14Normal(Global.storageService.getUserProfile().name ?? '');
+    return Text14Normal(Global.storageService.getUserProfile().name ?? '');
   }
 }

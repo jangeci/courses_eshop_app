@@ -34,7 +34,7 @@ class AppButtonWidget extends StatelessWidget {
         height: 50,
         decoration: appBoxDecoration(color: _color, boxBorder: _border),
         child: Center(
-          child: text16Normal(text, color: _textColor),
+          child: Text16Normal(text, color: _textColor),
         ),
       ),
     );

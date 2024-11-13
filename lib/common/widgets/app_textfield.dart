@@ -34,7 +34,7 @@ class AppTextfieldWidget extends StatelessWidget {
           text != null
               ? Padding(
                   padding: const EdgeInsets.only(bottom: 4.0),
-                  child: text14Normal(text!),
+                  child: Text14Normal(text!),
                 )
               : SizedBox(),
           Container(

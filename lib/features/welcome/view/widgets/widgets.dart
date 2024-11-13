@@ -33,12 +33,12 @@ class AppOnboardingPageWidget extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(top: 15),
-          child: text24Normal(title),
+          child: Text24Normal(title),
         ),
         Container(
           margin: const EdgeInsets.only(top: 15),
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: text16Normal(subtitle),
+          child: Text16Normal(subtitle),
         ),
         const Spacer(),
         NextButton(
@@ -80,7 +80,7 @@ class NextButton extends StatelessWidget {
         height: 50,
         margin: const EdgeInsets.only(top: 100, left: 25, right: 25),
         decoration: appBoxDecoration(),
-        child: Center(child: text16Normal(index < 3 ? 'Next' : 'Get started', color: Colors.white)),
+        child: Center(child: Text16Normal(index < 3 ? 'Next' : 'Get started', color: Colors.white)),
       ),
     );
   }

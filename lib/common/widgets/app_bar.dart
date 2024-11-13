@@ -10,7 +10,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: text16Normal(
+      title: Text16Normal(
         title,
         color: AppColors.primaryText,
       ),

@@ -48,7 +48,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     children: [
                       ThirdPartyLogin(),
                       Center(
-                        child: text14Normal('Or user your email account to login'),
+                        child: Text14Normal('Or user your email account to login'),
                       ),
                       SizedBox(height: 50),
                       AppTextfieldWidget(
@@ -70,7 +70,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                       SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: textUnderline('Forgot password'),
+                        child: TextUnderline('Forgot password'),
                       ),
                       SizedBox(height: 100.h),
                       Padding(
