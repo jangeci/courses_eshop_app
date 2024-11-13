@@ -2,17 +2,17 @@ import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-BoxDecoration appBoxShadow({
+BoxDecoration appBoxDecoration({
   Color color = AppColors.primaryElement,
   double radius = 15,
   double sR = 1,
   double bR = 2,
-  Border? border,
+  BoxBorder? boxBorder,
 }) {
   return BoxDecoration(
     color: color,
     borderRadius: BorderRadius.circular(radius),
-    border: border,
+    border: boxBorder,
     boxShadow: [
       BoxShadow(
         color: Colors.grey.withOpacity(0.6),

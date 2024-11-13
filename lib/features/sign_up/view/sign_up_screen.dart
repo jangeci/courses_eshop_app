@@ -3,10 +3,10 @@ import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/widgets/app_bar.dart';
 import 'package:courses_eshop_app/common/widgets/app_textfield.dart';
+import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
 import 'package:courses_eshop_app/features/sign_up/controller/sign_up_controller.dart';
 import 'package:courses_eshop_app/features/sign_up/provider/register_notifier.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
-import 'package:courses_eshop_app/widgets/common/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +32,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppbar(title: 'Sign Up'),
+          appBar: AppBarWidget(title: 'Sign Up'),
           body: loader
               ? const Center(
                   child: CircularProgressIndicator(
@@ -49,19 +49,19 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         child: text14Normal('Lorem ipsum dolor sit amet'),
                       ),
                       SizedBox(height: 50),
-                      appTextFiled(
+                      AppTextfieldWidget(
                         hint: 'User name',
                         text: 'Enter user name',
                         onChanged: (val) => ref.read(registerNotifierProvider.notifier).onUserNameChange(val),
                       ),
-                      appTextFiled(
+                      AppTextfieldWidget(
                         text: 'Email',
                         hint: 'Enter email',
                         autoFocus: true,
                         onChanged: (val) => ref.read(registerNotifierProvider.notifier).onEmailChange(val),
                       ),
                       SizedBox(height: 20),
-                      appTextFiled(
+                      AppTextfieldWidget(
                         hint: 'Password',
                         text: 'Password',
                         icon: Assets.icons.lock.path,
@@ -69,7 +69,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         onChanged: (val) => ref.read(registerNotifierProvider.notifier).onPasswordChange(val),
                       ),
                       SizedBox(height: 20),
-                      appTextFiled(
+                      AppTextfieldWidget(
                         hint: 'Confirm Password',
                         text: 'Confirm Password',
                         icon: Assets.icons.lock.path,
@@ -79,9 +79,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       SizedBox(height: 100.h),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: appButton('Sign Up', onTap: () {
-                          _controller.handleSignUp(ref);
-                        }),
+                        child: AppButtonWidget(
+                            text: 'Sign Up',
+                            onTap: () {
+                              _controller.handleSignUp(ref);
+                            }),
                       ),
                       SizedBox(height: 20),
                     ],

@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 Widget text24Normal(
   String text, {
   Color color = AppColors.primaryText,
+  FontWeight weight = FontWeight.w400,
 }) {
   return Text(
     text,
     style: TextStyle(
       fontSize: 24,
       color: color,
+      fontWeight: weight,
     ),
     textAlign: TextAlign.center,
   );

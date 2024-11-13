@@ -1,5 +1,6 @@
 import 'package:courses_eshop_app/features/welcome/provider/welcome_notifier.dart';
 import 'package:courses_eshop_app/features/welcome/view/widgets/widgets.dart';
+import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,22 +33,24 @@ class WelcomeScreen extends ConsumerWidget {
                   },
                   controller: _controller,
                   children: [
-                    appOnboardingPage(_controller,
-                        img: 'assets/images/reading.png',
+                    AppOnboardingPageWidget(
+                        controller: _controller,
+                        img: Assets.images.reading.path,
                         title: 'First see Learning',
                         subtitle: 'Forget about of paper all knowledge in one learning',
                         index: 1,
                         context: context),
-                    appOnboardingPage(
-                      _controller,
-                      img: 'assets/images/man.png',
+                    AppOnboardingPageWidget(
+                      controller: _controller,
+                      img: Assets.images.man.path,
                       title: 'Connect With Everyone',
                       subtitle: 'Always keep in touch with your tutor and friends',
                       index: 2,
                       context: context,
                     ),
-                    appOnboardingPage(_controller,
-                        img: 'assets/images/boy.png',
+                    AppOnboardingPageWidget(
+                        controller: _controller,
+                        img: Assets.images.boy.path,
                         title: 'Always Fascinated Learning',
                         subtitle: 'Anywhere, anytime. The time is at your discretion. So study wherever you can.',
                         index: 3,

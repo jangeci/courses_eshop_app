@@ -37,7 +37,7 @@ class LoginRequestEntity {
 class UserLoginResponseEntity {
   int? code;
   String? msg;
-  UserItem? data;
+  UserProfileModel? data;
 
   UserLoginResponseEntity({
     this.code,
@@ -49,13 +49,13 @@ class UserLoginResponseEntity {
       UserLoginResponseEntity(
         code: json["code"],
         msg: json["msg"],
-        data: UserItem.fromJson(json["data"]),
+        data: UserProfileModel.fromJson(json["data"]),
       );
 }
 
 
 // login result
-class UserItem {
+class UserProfileModel {
   String? access_token;
   String? token;
   String? name;
@@ -64,7 +64,7 @@ class UserItem {
   int? online;
   int? type;
 
-  UserItem({
+  UserProfileModel({
     this.access_token,
     this.token,
     this.name,
@@ -74,8 +74,8 @@ class UserItem {
     this.type,
   });
 
-  factory UserItem.fromJson(Map<String, dynamic> json) =>
-      UserItem(
+  factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
+      UserProfileModel(
         access_token: json["access_token"],
         token: json["token"],
         name: json["name"],

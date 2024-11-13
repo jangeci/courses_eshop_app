@@ -1,7 +1,7 @@
 import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/popup_messages.dart';
-import 'package:courses_eshop_app/features/home/view/home_screen.dart';
+import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
 import 'package:courses_eshop_app/features/sign_in/provider/sign_in_notifier.dart';
 import 'package:courses_eshop_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:courses_eshop_app/global.dart';

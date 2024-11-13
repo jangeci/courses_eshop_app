@@ -1,8 +1,7 @@
 import 'package:courses_eshop_app/common/app_box_shadow.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
-import 'package:courses_eshop_app/common/widgets/app_bar.dart';
-import 'package:courses_eshop_app/features/home/provider/bottom_nav_notifier.dart';
-import 'package:courses_eshop_app/features/home/view/widgets/widgets.dart';
+import 'package:courses_eshop_app/features/home_main/provider/bottom_nav_notifier.dart';
+import 'package:courses_eshop_app/features/home_main/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +19,6 @@ class HomeScreen extends ConsumerWidget {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppbar(title: 'Home'),
           body: homePages(index: index),
           bottomNavigationBar: Container(
             width: 375.w,

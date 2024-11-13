@@ -1,4 +1,4 @@
-import 'package:courses_eshop_app/features/home/view/home_screen.dart';
+import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
 import 'package:courses_eshop_app/features/sign_in/view/sign_in_screen.dart';
 import 'package:courses_eshop_app/features/sign_up/view/sign_up_screen.dart';
 import 'package:courses_eshop_app/features/welcome/view/welcome_screen.dart';

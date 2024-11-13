@@ -1,11 +1,12 @@
 import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
+import 'package:courses_eshop_app/features/home/view/home_content.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = [
-  BottomNavigationBarItem(
+  const BottomNavigationBarItem(
     label: 'Home',
     backgroundColor: AppColors.primaryBackground,
     icon: _navIcon(),
@@ -51,27 +52,36 @@ List<BottomNavigationBarItem> bottomNavItems = [
   )
 ];
 
-Widget _navIcon({
-  final double width = 15,
-  final double height = 15,
-  final String? img,
-  final Color color = AppColors.primaryFourElementText,
-}) {
-  return SizedBox(
-    height: height.w,
-    width: width.w,
-    child: appImageWithColor(
-      img: img ?? Assets.icons.home.path,
-      color: color,
-    ),
-  );
+class _navIcon extends StatelessWidget {
+  final double width;
+  final double height;
+  final String? img;
+  final Color color;
+
+  const _navIcon({
+    super.key,
+    this.width = 15,
+    this.height = 15,
+    this.img,
+    this.color = AppColors.primaryFourElementText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height.w,
+      width: width.w,
+      child: appImageWithColor(
+        img: img ?? Assets.icons.home.path,
+        color: color,
+      ),
+    );
+  }
 }
 
 Widget homePages({int index = 0}) {
   List<Widget> screens = [
-    Center(
-      child: appImage(img: Assets.icons.home.path, width: 250),
-    ),
+    HomeContent(),
     Center(
       child: appImage(img: Assets.icons.search.path, width: 250),
     ),
