@@ -38,7 +38,6 @@ class AppTextfieldWidget extends StatelessWidget {
                 )
               : SizedBox(),
           Container(
-            height: 50.h,
             decoration: appBoxDecorationTextField(),
             child: Row(
               children: [
@@ -47,12 +46,14 @@ class AppTextfieldWidget extends StatelessWidget {
                   child: appImage(img: icon),
                 ),
                 Expanded(
-                  child: AppTextfieldOnlyWidget(
-                    hint: hint,
-                    autoFocus: autoFocus,
-                    obscureText: obscureText,
-                    controller: controller,
-                    onChanged: onChanged,
+                  child: Container(
+                    child: AppTextfieldOnlyWidget(
+                      hint: hint,
+                      autoFocus: autoFocus,
+                      obscureText: obscureText,
+                      controller: controller,
+                      onChanged: onChanged,
+                    ),
                   ),
                 ),
               ],
@@ -81,7 +82,7 @@ class AppTextfieldOnlyWidget extends StatelessWidget {
     this.autoFocus = false,
     this.hint = 'Type in your info',
     this.width = 280,
-    this.height = 50,
+    this.height = 40,
   });
 
   @override
