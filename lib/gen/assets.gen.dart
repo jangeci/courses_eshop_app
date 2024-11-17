@@ -212,6 +212,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/icon.png
   AssetGenImage get icon => const AssetGenImage('assets/icons/icon.png');
 
+  /// File path: assets/icons/icons8-placeholder.png
+  AssetGenImage get icons8Placeholder =>
+      const AssetGenImage('assets/icons/icons8-placeholder.png');
+
   /// File path: assets/icons/image(10).png
   AssetGenImage get image10 =>
       const AssetGenImage('assets/icons/image(10).png');
@@ -495,6 +499,7 @@ class $AssetsIconsGen {
         icon1,
         icon3,
         icon,
+        icons8Placeholder,
         image10,
         image11,
         image12,

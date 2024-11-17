@@ -1,6 +1,6 @@
 import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
-import 'package:courses_eshop_app/features/home/view/home_content.dart';
+import 'package:courses_eshop_app/features/home_page/view/home_page.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,7 +81,7 @@ class _navIcon extends StatelessWidget {
 
 Widget homePages({int index = 0}) {
   List<Widget> screens = [
-    HomeContent(),
+    HomePage(),
     Center(
       child: appImage(img: Assets.icons.search.path, width: 250),
     ),

@@ -1,4 +1,5 @@
 import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
+import 'package:courses_eshop_app/common/services/app_http_client.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/popup_messages.dart';
 import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
@@ -81,6 +82,8 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+    AppHttpClient().post(Endpoints.LOGIN);
+    
     try {
       Global.storageService.setString(AppConstants.STORAGE_USER_PROFILE_KEY, '');
       Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, '');

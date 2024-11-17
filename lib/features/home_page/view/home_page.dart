@@ -1,19 +1,19 @@
-import 'package:courses_eshop_app/common/widgets/app_bar.dart';
+import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/widgets/search_widget.dart';
-import 'package:courses_eshop_app/features/home/controller/home_controller.dart';
-import 'package:courses_eshop_app/features/home/view/home_widgets.dart';
+import 'package:courses_eshop_app/features/home_page/controller/home_controller.dart';
+import 'package:courses_eshop_app/features/home_page/view/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeContent extends ConsumerStatefulWidget {
-  const HomeContent({super.key});
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({super.key});
 
   @override
-  ConsumerState<HomeContent> createState() => _HomeContentState();
+  ConsumerState<HomePage> createState() => _HomeContentState();
 }
 
-class _HomeContentState extends ConsumerState<HomeContent> {
+class _HomeContentState extends ConsumerState<HomePage> {
   late PageController _controller;
 
   @override
@@ -25,7 +25,8 @@ class _HomeContentState extends ConsumerState<HomeContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(title: 'Home'),
+      backgroundColor: Colors.white,
+      appBar: HomeAppBarWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
@@ -37,8 +38,10 @@ class _HomeContentState extends ConsumerState<HomeContent> {
               SizedBox(height: 20.h),
               searchWidget(),
               SizedBox(height: 20.h),
-              HomeBannerWidget(ref: ref, controller:  _controller),
+              HomeBannerWidget(ref: ref, controller: _controller),
               SizedBox(height: 20.h),
+              HomeMenuBarWidget(),
+              CoursesGridWidget(),
             ],
           ),
         ),

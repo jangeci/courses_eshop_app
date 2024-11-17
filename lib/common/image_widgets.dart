@@ -8,7 +8,7 @@ Widget appImage({
   double width = 16,
 }) {
   return Image.asset(
-    img ?? Assets.icons.user.path,
+    img ?? Assets.icons.icons8Placeholder.path,
     width: width,
   );
 }
@@ -19,7 +19,7 @@ Widget appImageWithColor({
   Color? color = AppColors.primaryElement,
 }) {
   return Image.asset(
-    img ?? Assets.icons.user.path,
+    img ?? Assets.icons.icons8Placeholder.path,
     width: width,
     color: color,
   );

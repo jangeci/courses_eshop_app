@@ -38,7 +38,10 @@ class AppOnboardingPageWidget extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(top: 15),
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Text16Normal(subtitle),
+          child: Text16Normal(
+            subtitle,
+            textAlign: TextAlign.center,
+          ),
         ),
         const Spacer(),
         NextButton(
