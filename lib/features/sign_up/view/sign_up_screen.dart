@@ -52,12 +52,12 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       AppTextfieldWidget(
                         hint: 'User name',
                         text: 'Enter user name',
+                        autoFocus: true,
                         onChanged: (val) => ref.read(registerNotifierProvider.notifier).onUserNameChange(val),
                       ),
                       AppTextfieldWidget(
                         text: 'Email',
                         hint: 'Enter email',
-                        autoFocus: true,
                         onChanged: (val) => ref.read(registerNotifierProvider.notifier).onEmailChange(val),
                       ),
                       SizedBox(height: 20),

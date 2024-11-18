@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:courses_eshop_app/common/global_loader/global_loader.dart';
 import 'package:courses_eshop_app/common/services/app_http_client.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
@@ -59,8 +61,8 @@ class SignInController {
           open_id: id,
           type: 1,
         );
+        print('user loged in firebase');
         asyncPostAllData(loginRequestEntity);
-        print('user loged in');
       } else {
         toastInfo('login error');
       }
@@ -82,17 +84,20 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
-    AppHttpClient().post(Endpoints.LOGIN);
-    
-    try {
-      Global.storageService.setString(AppConstants.STORAGE_USER_PROFILE_KEY, '');
-      Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, '');
+    var result = await SignInRepo.login(params: loginRequestEntity);
+    if (result.code == 200) {
+      try {
+        Global.storageService.setString(
+          AppConstants.STORAGE_USER_PROFILE_KEY,
+          jsonEncode(result.data),
+        );
+        Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
 
-      navKey.currentState?.pushNamedAndRemoveUntil(HomeScreen.kRoute, (route) => false);
-    } catch (e) {
-      if (kDebugMode) {
-        toastInfo(e.toString());
+        navKey.currentState?.pushNamedAndRemoveUntil(HomeScreen.kRoute, (route) => false);
+      } catch (e) {
+        toastInfo('Login error');
       }
     }
+    AppHttpClient().post(Endpoints.LOGIN);
   }
 }

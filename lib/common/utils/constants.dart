@@ -10,5 +10,4 @@ class AppConstants {
 
 class Endpoints {
   static const String LOGIN = 'api/login';
-  static const String REGISTER_USER = 'api/auth/register';
 }

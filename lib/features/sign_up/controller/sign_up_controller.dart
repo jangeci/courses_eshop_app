@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignUpController {
-
   SignUpController();
 
   void handleSignUp(WidgetRef ref) async {
+    // FirebaseAuth.instance.signOut();
+    // return;
+
     var state = ref.read(registerNotifierProvider);
     var loadingNotifier = ref.read(appLoaderProvider.notifier);
 
@@ -44,7 +46,7 @@ class SignUpController {
 
     var context = Navigator.of(ref.context);
     try {
-      final credential = await SignUpRepo.firebaseSignIn(email, password);
+      final credential = await SignUpRepo.firebaseSignUp(email, password);
 
       if (kDebugMode) {
         print(credential);
@@ -53,8 +55,9 @@ class SignUpController {
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(name);
-        //get server photo url
-        //set server photo url
+        String photoUrl = 'uploads/default.png';
+        await credential.user?.updatePhotoURL(photoUrl);
+
         toastInfo('An email has been sent to verify your account. Please open that email and confirm your identity.');
         context.pop();
       }
@@ -63,6 +66,8 @@ class SignUpController {
         toastInfo('This password is too weak');
       } else if (e.code == 'email-already-in-use') {
         toastInfo('This email address has already been registered');
+      } else {
+        toastInfo(e.message ?? 'Unknown error');
       }
     } catch (e) {
       if (kDebugMode) {
