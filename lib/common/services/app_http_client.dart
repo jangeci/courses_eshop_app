@@ -74,12 +74,56 @@ class AppHttpClient {
       requestOptions.headers!.addAll(authorization);
     }
 
+    if (kDebugMode) {
+      print(path);
+    }
+
     var response = await dio.post(
       path,
       data: data,
       queryParameters: queryParameters,
       options: requestOptions,
     );
+
+    if (kDebugMode) {
+      print(response);
+    }
+
+    return response.data;
+  }
+
+  Future get(
+    String path, {
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    // CancelToken? cancelToken,
+    // void Function(int, int)? onSendProgress,
+    // void Function(int, int)? onReceiveProgress,
+  }) async {
+    Options requestOptions = options ?? Options();
+    requestOptions.headers = requestOptions.headers ?? {};
+
+    Map<String, dynamic>? authorization = getAuthorizationHeader();
+
+    if (authorization != null && authorization.isNotEmpty) {
+      requestOptions.headers!.addAll(authorization);
+    }
+
+    if (kDebugMode) {
+      print(path);
+    }
+
+    var response = await dio.get(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: requestOptions,
+    );
+
+    if (kDebugMode) {
+      print(response);
+    }
 
     return response.data;
   }

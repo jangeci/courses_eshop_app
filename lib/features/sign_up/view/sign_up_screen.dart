@@ -46,7 +46,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     children: [
                       SizedBox(height: 20),
                       Center(
-                        child: Text14Normal('Lorem ipsum dolor sit amet'),
+                        child: Text14Normal(
+                          'Lorem ipsum dolor sit amet',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(height: 50),
                       AppTextfieldWidget(

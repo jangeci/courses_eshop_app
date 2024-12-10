@@ -30,13 +30,13 @@ class Text24Normal extends StatelessWidget {
 class Text16Normal extends StatelessWidget {
   final String text;
   final Color color;
-  final FontWeight weight;
+  final FontWeight? fontWeight;
   final TextAlign? textAlign;
 
   const Text16Normal(
     this.text, {
     super.key,
-    this.weight = FontWeight.normal,
+    this.fontWeight,
     this.color = AppColors.primarySecondaryElementText,
     this.textAlign,
   });
@@ -48,7 +48,7 @@ class Text16Normal extends StatelessWidget {
       style: TextStyle(
         fontSize: 16,
         color: color,
-        fontWeight: weight,
+        fontWeight: fontWeight,
       ),
       textAlign: textAlign,
     );
@@ -58,11 +58,15 @@ class Text16Normal extends StatelessWidget {
 class Text14Normal extends StatelessWidget {
   final String text;
   final Color color;
+  final FontWeight fontWeight;
+  final TextAlign? textAlign;
 
   const Text14Normal(
     this.text, {
     super.key,
     this.color = AppColors.primaryThirdElementText,
+    this.fontWeight = FontWeight.normal,
+    this.textAlign,
   });
 
   @override
@@ -72,8 +76,9 @@ class Text14Normal extends StatelessWidget {
       style: TextStyle(
         fontSize: 14,
         color: color,
+        fontWeight: fontWeight,
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
     );
   }
 }
@@ -82,13 +87,15 @@ class Text11Normal extends StatelessWidget {
   final String text;
   final Color color;
   final FontWeight weight;
+  final TextAlign? textAlign;
 
   const Text11Normal(
-      this.text, {
-        super.key,
-        this.weight = FontWeight.normal,
-        this.color = AppColors.primaryElementText,
-      });
+    this.text, {
+    super.key,
+    this.weight = FontWeight.normal,
+    this.color = AppColors.primaryElementText,
+    this.textAlign,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +106,7 @@ class Text11Normal extends StatelessWidget {
         color: color,
         fontWeight: weight,
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
     );
   }
 }
@@ -126,6 +133,36 @@ class Text10Normal extends StatelessWidget {
         fontWeight: weight,
       ),
       textAlign: TextAlign.center,
+    );
+  }
+}
+
+class FadeText extends StatelessWidget {
+  final String text;
+  final Color color;
+  final FontWeight fontWeight;
+  final double fontSize;
+
+  const FadeText(
+    this.text, {
+    super.key,
+    this.fontWeight = FontWeight.w700,
+    this.color = AppColors.primaryElementText,
+    this.fontSize = 10,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      softWrap: false,
+      maxLines: 1,
+      overflow: TextOverflow.fade,
+      style: TextStyle(
+        fontSize: fontSize,
+        color: color,
+        fontWeight: fontWeight,
+      ),
     );
   }
 }

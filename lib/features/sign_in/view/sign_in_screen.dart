@@ -48,7 +48,10 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                     children: [
                       ThirdPartyLogin(),
                       Center(
-                        child: Text14Normal('Or user your email account to login'),
+                        child: Text14Normal(
+                          'Or user your email account to login',
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(height: 50),
                       AppTextfieldWidget(

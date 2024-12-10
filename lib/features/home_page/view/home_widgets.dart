@@ -1,10 +1,13 @@
 import 'package:courses_eshop_app/common/app_box_shadow.dart';
 import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
+import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
+import 'package:courses_eshop_app/features/course_detail/view/course_detail_screen.dart';
 import 'package:courses_eshop_app/features/home_page/controller/home_controller.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:courses_eshop_app/global.dart';
+import 'package:courses_eshop_app/models/course.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -84,20 +87,32 @@ class UserName extends StatelessWidget {
   }
 }
 
-class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const HomeAppBarWidget({super.key});
+class HomeAppBarWidget extends ConsumerWidget implements PreferredSizeWidget {
+  const HomeAppBarWidget({super.key, required WidgetRef ref});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var profileState = ref.watch(homeUserProfileProvider);
+
     return Container(
       margin: EdgeInsets.only(left: 7.w, right: 7.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          appImage(img: Assets.icons.menu.path, width: 18.w),
-          GestureDetector(
-            child: AppBoxDecorationImage(),
-          )
+          AppImageWidget(img: Assets.icons.menu.path, width: 18.w),
+          profileState.when(
+            data: (data) {
+              return GestureDetector(
+                child: AppBoxDecorationImage(
+                  imagePath: getImageUrl(data.avatar ?? ''),
+                ),
+              );
+            },
+            error: (err, stack) {
+              return AppImageWidget(img: Assets.icons.person2.path, width: 20.w);
+            },
+            loading: () => const SizedBox(),
+          ),
         ],
       ),
     );
@@ -123,7 +138,7 @@ class HomeMenuBarWidget extends StatelessWidget {
                 child: Text16Normal(
                   'Choose your course',
                   color: AppColors.primaryText,
-                  weight: FontWeight.w700,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               GestureDetector(
@@ -152,7 +167,7 @@ class HomeMenuBarWidget extends StatelessWidget {
                   horizontal: 15.w,
                   vertical: 5.h,
                 ),
-                child: Text11Normal('All'),
+                child: const Text11Normal('All', textAlign: TextAlign.center,),
               ),
             ),
             Container(
@@ -160,9 +175,10 @@ class HomeMenuBarWidget extends StatelessWidget {
                 horizontal: 15.w,
                 vertical: 5.h,
               ),
-              child: Text11Normal(
+              child: const Text11Normal(
                 'Popular',
                 color: AppColors.primaryThirdElementText,
+                textAlign: TextAlign.center,
               ),
             ),
             Container(
@@ -170,9 +186,10 @@ class HomeMenuBarWidget extends StatelessWidget {
                 horizontal: 15.w,
                 vertical: 5.h,
               ),
-              child: Text11Normal(
+              child: const Text11Normal(
                 'Newest',
                 color: AppColors.primaryThirdElementText,
+                textAlign: TextAlign.center,
               ),
             ),
           ],
@@ -183,21 +200,122 @@ class HomeMenuBarWidget extends StatelessWidget {
 }
 
 class CoursesGridWidget extends StatelessWidget {
-  const CoursesGridWidget({super.key});
+  final WidgetRef ref;
+
+  const CoursesGridWidget({
+    super.key,
+    required this.ref,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-        physics: ScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 6,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 40,
-          mainAxisSpacing: 40,
+    final courseState = ref.watch(homeCourseListProvider);
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 18.h),
+      child: courseState.when(
+          data: (data) => GridView.builder(
+                physics: const ScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: data?.length ?? 0,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 40,
+                  childAspectRatio: 1.6,
+                ),
+                itemBuilder: (context, index) => SingleCourseTile(
+                  fit: BoxFit.cover,
+                  imagePath: getImageUrl(data?[index].thumbnail ?? ''),
+                  courseItem: data![index],
+                ),
+              ),
+          error: (e, stack) {
+            return const Center(
+              child: Text('Error loading data'),
+            );
+          },
+          loading: () {
+            return const Center(
+              child: Text('Loading'),
+            );
+          }),
+    );
+  }
+}
+
+class SingleCourseTile extends StatelessWidget {
+  final double width;
+  final double height;
+  final String imagePath;
+  final BoxFit fit;
+  final CourseItem? courseItem;
+
+  const SingleCourseTile({
+    super.key,
+    this.courseItem,
+    this.width = 40,
+    this.height = 40,
+    required this.imagePath,
+    this.fit = BoxFit.fitHeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, CourseDetailScreen.kRoute, arguments: {
+          'id': courseItem!.id,
+        });
+      },
+      child: Container(
+        width: width.w,
+        height: height.w,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: fit,
+            image: NetworkImage(
+              imagePath,
+            ),
+          ),
+          borderRadius: BorderRadius.circular(
+            20.w,
+          ),
         ),
-        itemBuilder: (context, index) => appImage(),
+        child: courseItem != null
+            ? Container(
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.9),
+                      Colors.black.withOpacity(0),
+                    ],
+                    center: Alignment.bottomLeft,
+                    radius: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    20.w,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w),
+                      child: FadeText(courseItem!.name!),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w, bottom: 16.h),
+                      child: FadeText(
+                        '${courseItem!.lesson_num!.toString()} Lessons',
+                        color: AppColors.primaryFourElementText,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : const SizedBox(),
       ),
     );
   }

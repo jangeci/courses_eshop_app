@@ -21,7 +21,7 @@ Widget searchWidget() {
           child: Row(
             children: [
               SizedBox(width: 15.w),
-              appImage(
+              AppImageWidget(
                 img: Assets.icons.search.path,
                 width: 20.w,
               ),
@@ -40,7 +40,7 @@ Widget searchWidget() {
           height: 40.h,
           decoration: appBoxDecoration(),
           child: Center(
-            child: appImage(width: 24, img: Assets.icons.search.path),
+            child: AppImageWidget(width: 24, img: Assets.icons.search.path),
           ),
         ),
       )

@@ -83,16 +83,16 @@ Widget homePages({int index = 0}) {
   List<Widget> screens = [
     HomePage(),
     Center(
-      child: appImage(img: Assets.icons.search.path, width: 250),
+      child: AppImageWidget(img: Assets.icons.search.path, width: 250),
     ),
     Center(
-      child: appImage(img: Assets.icons.playCircle.path, width: 250),
+      child: AppImageWidget(img: Assets.icons.playCircle.path, width: 250),
     ),
     Center(
-      child: appImage(img: Assets.icons.message.path, width: 250),
+      child: AppImageWidget(img: Assets.icons.message.path, width: 250),
     ),
     Center(
-      child: appImage(img: Assets.icons.person2.path, width: 250),
+      child: AppImageWidget(img: Assets.icons.person2.path, width: 250),
     ),
   ];
 

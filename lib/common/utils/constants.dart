@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String SERVER_API_URL = 'http://127.0.0.1:8000/';
+  static const String SERVER_API_URL = 'http://localhost/';
   //android
   // static const String SERVER_API_URL = 'http://10.0.2.2:8000/';
   static const String IMAGE_UPLOADS_PATH = '${SERVER_API_URL}uploads/';
@@ -10,4 +10,10 @@ class AppConstants {
 
 class Endpoints {
   static const String LOGIN = 'api/login';
+  static const String COURSES = 'api/courses';
+  static const String COURSE_DETAIL = 'api/course-detail';
+}
+
+String getImageUrl(String path){
+  return '${AppConstants.IMAGE_UPLOADS_PATH}${path}';
 }

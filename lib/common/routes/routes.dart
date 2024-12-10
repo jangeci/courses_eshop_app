@@ -1,3 +1,4 @@
+import 'package:courses_eshop_app/features/course_detail/view/course_detail_screen.dart';
 import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
 import 'package:courses_eshop_app/features/sign_in/view/sign_in_screen.dart';
 import 'package:courses_eshop_app/features/sign_up/view/sign_up_screen.dart';
@@ -17,9 +18,11 @@ class AppScreens {
   static List<RouteEntity> routes() {
     return [
       RouteEntity(WelcomeScreen.kRoute, WelcomeScreen()),
-      RouteEntity(SignInScreen.kRoute, SignInScreen()),
-      RouteEntity(SignUpScreen.kRoute, SignUpScreen()),
-      RouteEntity(HomeScreen.kRoute, HomeScreen()),
+      RouteEntity(SignInScreen.kRoute, const SignInScreen()),
+      RouteEntity(SignUpScreen.kRoute, const SignUpScreen()),
+      RouteEntity(HomeScreen.kRoute, const HomeScreen()),
+      RouteEntity(HomeScreen.kRoute, const HomeScreen()),
+      RouteEntity(CourseDetailScreen.kRoute, const CourseDetailScreen()),
     ];
   }
 

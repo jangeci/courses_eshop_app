@@ -1,4 +1,3 @@
-import 'package:courses_eshop_app/common/image_widgets.dart';
 import 'package:courses_eshop_app/common/widgets/search_widget.dart';
 import 'package:courses_eshop_app/features/home_page/controller/home_controller.dart';
 import 'package:courses_eshop_app/features/home_page/view/home_widgets.dart';
@@ -26,23 +25,28 @@ class _HomeContentState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: HomeAppBarWidget(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 20.h),
-              const UserName(),
-              SizedBox(height: 20.h),
-              searchWidget(),
-              SizedBox(height: 20.h),
-              HomeBannerWidget(ref: ref, controller: _controller),
-              SizedBox(height: 20.h),
-              HomeMenuBarWidget(),
-              CoursesGridWidget(),
-            ],
+      appBar: HomeAppBarWidget(ref: ref),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          ref.refresh(homeCourseListProvider.notifier);
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20.h),
+                const UserName(),
+                SizedBox(height: 20.h),
+                searchWidget(),
+                SizedBox(height: 20.h),
+                HomeBannerWidget(ref: ref, controller: _controller),
+                SizedBox(height: 20.h),
+                HomeMenuBarWidget(),
+                CoursesGridWidget(ref: ref),
+              ],
+            ),
           ),
         ),
       ),

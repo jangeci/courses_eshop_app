@@ -3,15 +3,20 @@ import 'package:flutter/material.dart';
 
 import '../gen/assets.gen.dart';
 
-Widget appImage({
-  String? img,
-  double width = 16,
-}) {
-  return Image.asset(
-    img ?? Assets.icons.icons8Placeholder.path,
-    width: width,
-  );
+class AppImageWidget extends StatelessWidget {
+  final String? img;
+  final double width;
+  const AppImageWidget({super.key, this.img, this.width = 16,});
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      img ?? Assets.icons.icons8Placeholder.path,
+      width: width,
+    );
+  }
 }
+
 
 Widget appImageWithColor({
   String? img,

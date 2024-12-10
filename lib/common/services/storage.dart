@@ -37,10 +37,9 @@ class StorageService {
   }
 
   UserProfileModel getUserProfile() {
-    // var json =  _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? '';
-    var json = {'name': 'John Doe'};
+    var json = _pref.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? '';
 
-    var profileJson = jsonDecode(jsonEncode(json));
+    var profileJson = jsonDecode(json);
     return UserProfileModel.fromJson(profileJson);
   }
 }

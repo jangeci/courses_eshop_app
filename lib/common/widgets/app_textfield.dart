@@ -43,7 +43,7 @@ class AppTextfieldWidget extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(left: 16.w),
-                  child: appImage(img: icon),
+                  child: AppImageWidget(img: icon),
                 ),
                 Expanded(
                   child: Container(

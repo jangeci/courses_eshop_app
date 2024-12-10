@@ -1,5 +1,4 @@
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
-import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +11,7 @@ BoxDecoration appBoxDecoration({
 }) {
   return BoxDecoration(
     color: color,
-    borderRadius: BorderRadius.circular(radius),
+    borderRadius: BorderRadius.circular(radius.w),
     border: boxBorder,
     boxShadow: [
       BoxShadow(
@@ -27,7 +26,7 @@ BoxDecoration appBoxDecoration({
 
 BoxDecoration appBoxShadowWithRadius({
   Color color = AppColors.primaryElement,
-  double radius = 15,
+  double radius = 20,
   double sR = 1,
   double bR = 2,
   Border? border,
@@ -35,8 +34,8 @@ BoxDecoration appBoxShadowWithRadius({
   return BoxDecoration(
     color: color,
     borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(20.h),
-      topRight: Radius.circular(20.h),
+      topLeft: Radius.circular(radius.h),
+      topRight: Radius.circular(radius.h),
     ),
     border: border,
     boxShadow: [
@@ -67,9 +66,16 @@ BoxDecoration appBoxDecorationTextField({
 class AppBoxDecorationImage extends StatelessWidget {
   final double width;
   final double height;
-  final String? imagePath;
+  final String imagePath;
+  final BoxFit fit;
 
-  const AppBoxDecorationImage({super.key, this.width = 40, this.height = 40, this.imagePath});
+  const AppBoxDecorationImage({
+    super.key,
+    this.width = 40,
+    this.height = 40,
+    required this.imagePath,
+    this.fit = BoxFit.fitHeight,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +84,9 @@ class AppBoxDecorationImage extends StatelessWidget {
       height: height.w,
       decoration: BoxDecoration(
         image: DecorationImage(
-          fit: BoxFit.fitHeight,
-          image: AssetImage(
-            imagePath ?? Assets.icons.person2.path,
+          fit: fit,
+          image: NetworkImage(
+            imagePath,
           ),
         ),
         borderRadius: BorderRadius.circular(
