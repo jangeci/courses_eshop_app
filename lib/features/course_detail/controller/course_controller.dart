@@ -15,7 +15,7 @@ Future<CourseItem?> courseDetailController(Ref ref, {required int id}) async {
   if (response?.code == 200) {
     return response!.data;
   } else {
-    print('requrest failed ${response?.code}');
+    print('Course detail request failed ${response?.code}');
   }
   return null;
 }
@@ -29,7 +29,7 @@ Future<List<LessonModel>?> courseLessonsController(Ref ref, {required int id}) a
   if (response?.code == 200) {
     return response!.data;
   } else {
-    print('requrest failed ${response?.code}');
+    print('Course lessons request failed ${response?.code}');
   }
   return null;
 }

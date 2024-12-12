@@ -5,11 +5,11 @@ import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/list_item_widget.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
+import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:courses_eshop_app/models/course.dart';
 import 'package:courses_eshop_app/models/lesson_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetailThumbnailWidget extends StatelessWidget {
@@ -224,6 +224,7 @@ class LessonInfoWidget extends StatelessWidget {
                 ),
           ListView.builder(
             shrinkWrap: true,
+            itemCount: lessons.length,
             itemBuilder: (context, index) {
               LessonModel lesson = lessons[index];
               return Container(
@@ -243,7 +244,9 @@ class LessonInfoWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, LessonDetailScreen.kRoute, arguments: {'id': lesson.id});
+                  },
                   child: Row(
                     children: [
                       Expanded(

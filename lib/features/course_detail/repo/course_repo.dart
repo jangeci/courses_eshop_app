@@ -12,6 +12,7 @@ class CourseRepo {
 
     return CourseDetailResponseEntity.fromJson(response);
   }
+
   static Future<LessonListResponseEntity?> lessons({LessonRequestEntity? params}) async {
     var response = await AppHttpClient().get(
       Endpoints.LESSONS,

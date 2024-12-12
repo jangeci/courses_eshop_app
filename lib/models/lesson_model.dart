@@ -27,9 +27,35 @@ class LessonListResponseEntity {
       msg: json['msg'],
       data: json['data'] == null
           ? []
-          : List<LessonModel>.from(json['data'].map((item) {
-              return LessonModel.fromJson(item);
-            })),
+          : List<LessonModel>.from(
+              json['data'].map((item) {
+                return LessonModel.fromJson(item);
+              }),
+            ),
+    );
+  }
+}
+
+class LessonDetailResponseEntity {
+  int? code;
+  String? msg;
+  LessonModel? data;
+
+  LessonDetailResponseEntity({
+    this.code,
+    this.data,
+    this.msg,
+  });
+
+  factory LessonDetailResponseEntity.fromJson(Map<String, dynamic> json) {
+    return LessonDetailResponseEntity(
+      code: json['code'],
+      msg: json['msg'],
+      data: json['data'] == null
+          ? null
+          : LessonModel.fromJson(
+              json['data'],
+            ),
     );
   }
 }
