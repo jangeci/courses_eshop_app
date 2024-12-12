@@ -7,7 +7,9 @@ import 'package:courses_eshop_app/common/widgets/list_item_widget.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:courses_eshop_app/models/course.dart';
+import 'package:courses_eshop_app/models/lesson_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetailThumbnailWidget extends StatelessWidget {
@@ -189,11 +191,11 @@ class CourseDetailIncludesWidget extends StatelessWidget {
 }
 
 class LessonInfoWidget extends StatelessWidget {
-  final CourseItem courseItem;
+  final List<LessonModel> lessons;
 
   const LessonInfoWidget({
     super.key,
-    required this.courseItem,
+    required this.lessons,
   });
 
   @override
@@ -203,64 +205,87 @@ class LessonInfoWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text14Normal(
-            'Lessons list',
-            fontWeight: FontWeight.w700,
-            color: AppColors.primaryText,
-          ),
-          SizedBox(height: 20),
-          Container(
-            width: 325.w,
-            height: 80.h,
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            decoration: appBoxDecoration(
-              sR: 2,
-              bR: 3,
-              radius: 10,
-              color: Colors.white,
-            ),
-            child: InkWell(
-              onTap: () {},
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        AppBoxDecorationImage(
-                          imagePath: '${getImageUrl('/default.png')}',
-                          width: 60.w,
-                          height: 60.w,
-                          fit: BoxFit.fill,
-                        ),
-                        SizedBox(width: 8.w),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text14Normal(
-                                'First lesson',
-                                color: AppColors.primaryText,
-                                fontWeight: FontWeight.w700,
-                              ),
-                              Text11Normal(
-                                'First lesson description',
-                                color: AppColors.primaryText,
-                              ),
-                            ],
-                          ),
-                        ),
-                        AppImageWidget(
-                          img: Assets.icons.arrowRight.path,
-                          width: 24,
-                        )
-                      ],
+          lessons.isNotEmpty
+              ? Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: SizedBox(
+                    width: 325.w,
+                    child: const Text14Normal(
+                      'Lessons list',
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.primaryText,
                     ),
-                  )
-                ],
-              ),
-            ),
-          )
+                  ),
+                )
+              : const Text14Normal(
+                  'Lessons list is empty',
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primaryText,
+                ),
+          ListView.builder(
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              LessonModel lesson = lessons[index];
+              return Container(
+                margin: EdgeInsets.only(bottom: 20.h),
+                width: 325.w,
+                constraints: BoxConstraints(
+                  minHeight: 80.h,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                  vertical: 8.h,
+                ),
+                decoration: appBoxDecoration(
+                  sR: 2,
+                  bR: 3,
+                  radius: 10,
+                  color: Colors.white,
+                ),
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            AppBoxDecorationImage(
+                              imagePath: getImageUrl(lesson.thumbnail ?? '/default.png'),
+                              width: 60.w,
+                              height: 60.w,
+                              fit: BoxFit.fill,
+                            ),
+                            SizedBox(width: 8.w),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text14Normal(
+                                    lesson.name ?? '',
+                                    color: AppColors.primaryText,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  Text11Normal(
+                                    lesson.description ?? '',
+                                    color: AppColors.primaryText,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            AppImageWidget(
+                              img: Assets.icons.arrowRight.path,
+                              width: 24,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

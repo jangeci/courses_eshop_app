@@ -12,6 +12,7 @@ class Endpoints {
   static const String LOGIN = 'api/login';
   static const String COURSES = 'api/courses';
   static const String COURSE_DETAIL = 'api/course-detail';
+  static const String LESSONS = 'api/course-lessons';
 }
 
 String getImageUrl(String path){
