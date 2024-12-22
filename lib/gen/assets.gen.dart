@@ -585,6 +585,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/boy.png
   AssetGenImage get boy => const AssetGenImage('assets/images/boy.png');
 
+  /// File path: assets/images/defaultimg.png
+  AssetGenImage get defaultimg =>
+      const AssetGenImage('assets/images/defaultimg.png');
+
   /// File path: assets/images/ic_launcher.png
   AssetGenImage get icLauncher =>
       const AssetGenImage('assets/images/ic_launcher.png');
@@ -632,6 +636,7 @@ class $AssetsImagesGen {
         actionbarSearch,
         aliuserTitleBackNormal9,
         boy,
+        defaultimg,
         icLauncher,
         icPlaying,
         iconsFacebook,

@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:courses_eshop_app/common/utils/app_colors.dart';
+import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -79,20 +81,26 @@ class AppBoxDecorationImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width.w,
-      height: height.w,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: fit,
-          image: NetworkImage(
-            imagePath,
+    return CachedNetworkImage(
+      imageUrl: imagePath,
+      imageBuilder: (context, imageProvider) => Container(
+        width: width.w,
+        height: height.w,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: fit,
+            image: imageProvider,
+          ),
+          borderRadius: BorderRadius.circular(
+            20.w,
           ),
         ),
-        borderRadius: BorderRadius.circular(
-          20.w,
-        ),
       ),
+      placeholder: (context, url) => Container(
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(),
+      ),
+      errorWidget: (context, url, error) => Image.asset(Assets.images.defaultimg.path),
     );
   }
 }

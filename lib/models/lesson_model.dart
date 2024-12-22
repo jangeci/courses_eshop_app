@@ -61,36 +61,34 @@ class LessonDetailResponseEntity {
 }
 
 class LessonModel {
-  int? id;
-  String? name;
+  int id;
+  String name;
   String? description;
   String? thumbnail;
-  List<VideoItem>? videoItem;
+  List<VideoItem> videoItems;
 
-  LessonModel({this.id, this.name, this.description, this.thumbnail, this.videoItem});
+  LessonModel({required this.id, required this.name, this.description, this.thumbnail, this.videoItems = const []});
 
-  LessonModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    thumbnail = json['thumbnail'];
-    if (json['video'] != null) {
-      videoItem = <VideoItem>[];
-      json['video'].forEach((v) {
-        videoItem!.add(new VideoItem.fromJson(v));
-      });
-    }
+  factory LessonModel.fromJson(Map<String, dynamic> json) {
+    return LessonModel(
+        id: json['id'],
+        name: json['name'],
+        description: json['description'],
+        thumbnail: json['thumbnail'],
+        videoItems: json['video'] != null
+            ? (json['video'] as List<dynamic>).map((v) {
+                return new VideoItem.fromJson(v);
+              }).toList()
+            : []);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['description'] = description;
     data['thumbnail'] = thumbnail;
-    if (videoItem != null) {
-      data['video'] = videoItem!.map((v) => v.toJson()).toList();
-    }
+    data['video'] = videoItems!.map((v) => v.toJson()).toList();
     return data;
   }
 }
@@ -109,10 +107,38 @@ class VideoItem {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['url'] = url;
     data['name'] = name;
     data['thumbnail'] = thumbnail;
     return data;
+  }
+}
+
+class LessonVideo {
+  final List<VideoItem> videoItems;
+  final Future<void>? initializeVideoPlayer;
+  final bool isPlay;
+  final String? url;
+
+  LessonVideo({
+    this.initializeVideoPlayer,
+    this.isPlay = false,
+    this.videoItems = const [],
+    this.url,
+  });
+
+  LessonVideo copyWith({
+    List<VideoItem>? videoItems,
+    Future<void>? initializeVideoPlayer,
+    bool? isPlay,
+    String? url,
+  }) {
+    return LessonVideo(
+      initializeVideoPlayer: initializeVideoPlayer ?? this.initializeVideoPlayer,
+      isPlay: isPlay ?? this.isPlay,
+      videoItems: videoItems ?? this.videoItems,
+      url: url ?? this.url,
+    );
   }
 }

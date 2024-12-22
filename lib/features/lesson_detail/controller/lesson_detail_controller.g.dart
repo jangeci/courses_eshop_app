@@ -7,7 +7,7 @@ part of 'lesson_detail_controller.dart';
 // **************************************************************************
 
 String _$lessonDetailControllerHash() =>
-    r'cf017f0e034730ec44097d7713341fa608cbb8c0';
+    r'a2763f7ea52b8955871f74ccd932c558f87f51db';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,7 +35,7 @@ class _SystemHash {
 const lessonDetailControllerProvider = LessonDetailControllerFamily();
 
 /// See also [lessonDetailController].
-class LessonDetailControllerFamily extends Family<AsyncValue<LessonModel?>> {
+class LessonDetailControllerFamily extends Family<AsyncValue<void>> {
   /// See also [lessonDetailController].
   const LessonDetailControllerFamily();
 
@@ -73,8 +73,7 @@ class LessonDetailControllerFamily extends Family<AsyncValue<LessonModel?>> {
 }
 
 /// See also [lessonDetailController].
-class LessonDetailControllerProvider
-    extends AutoDisposeFutureProvider<LessonModel?> {
+class LessonDetailControllerProvider extends AutoDisposeFutureProvider<void> {
   /// See also [lessonDetailController].
   LessonDetailControllerProvider({
     required int id,
@@ -109,7 +108,7 @@ class LessonDetailControllerProvider
 
   @override
   Override overrideWith(
-    FutureOr<LessonModel?> Function(LessonDetailControllerRef provider) create,
+    FutureOr<void> Function(LessonDetailControllerRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -126,7 +125,7 @@ class LessonDetailControllerProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<LessonModel?> createElement() {
+  AutoDisposeFutureProviderElement<void> createElement() {
     return _LessonDetailControllerProviderElement(this);
   }
 
@@ -146,18 +145,36 @@ class LessonDetailControllerProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin LessonDetailControllerRef on AutoDisposeFutureProviderRef<LessonModel?> {
+mixin LessonDetailControllerRef on AutoDisposeFutureProviderRef<void> {
   /// The parameter `id` of this provider.
   int get id;
 }
 
 class _LessonDetailControllerProviderElement
-    extends AutoDisposeFutureProviderElement<LessonModel?>
+    extends AutoDisposeFutureProviderElement<void>
     with LessonDetailControllerRef {
   _LessonDetailControllerProviderElement(super.provider);
 
   @override
   int get id => (origin as LessonDetailControllerProvider).id;
 }
+
+String _$lessonDataControllerHash() =>
+    r'baf5c483bfaea7c32245dd12b4d14d6c47543e15';
+
+/// See also [LessonDataController].
+@ProviderFor(LessonDataController)
+final lessonDataControllerProvider = AutoDisposeAsyncNotifierProvider<
+    LessonDataController, LessonVideo>.internal(
+  LessonDataController.new,
+  name: r'lessonDataControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$lessonDataControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$LessonDataController = AutoDisposeAsyncNotifier<LessonVideo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

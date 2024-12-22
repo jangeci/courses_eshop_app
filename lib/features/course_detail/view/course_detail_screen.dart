@@ -59,7 +59,7 @@ class _CourseDetailScreenState extends ConsumerState<CourseDetailScreen> {
               ),
             ),
             lessonsData.when(
-              data: (data) => data == null ? const SizedBox() : LessonInfoWidget(lessons: data),
+              data: (data) => data == null ? const SizedBox() : LessonInfoWidget(lessons: data, ref: ref),
               error: (Object error, StackTrace stackTrace) {
                 return const SizedBox();
               },

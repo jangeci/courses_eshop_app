@@ -5,11 +5,13 @@ import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/list_item_widget.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
+import 'package:courses_eshop_app/features/lesson_detail/controller/lesson_detail_controller.dart';
 import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
 import 'package:courses_eshop_app/models/course.dart';
 import 'package:courses_eshop_app/models/lesson_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetailThumbnailWidget extends StatelessWidget {
@@ -25,7 +27,7 @@ class CourseDetailThumbnailWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25.w),
       child: AppBoxDecorationImage(
-        imagePath: getImageUrl(data.thumbnail!),
+        imagePath: getUploadedFileUrl(data.thumbnail!),
         width: 325.w,
         height: 160.h,
         fit: BoxFit.cover,
@@ -192,10 +194,12 @@ class CourseDetailIncludesWidget extends StatelessWidget {
 
 class LessonInfoWidget extends StatelessWidget {
   final List<LessonModel> lessons;
+  final WidgetRef ref;
 
   const LessonInfoWidget({
     super.key,
     required this.lessons,
+    required this.ref,
   });
 
   @override
@@ -245,6 +249,7 @@ class LessonInfoWidget extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
+                    ref.watch(lessonDetailControllerProvider(id: lesson.id));
                     Navigator.pushNamed(context, LessonDetailScreen.kRoute, arguments: {'id': lesson.id});
                   },
                   child: Row(
@@ -253,7 +258,7 @@ class LessonInfoWidget extends StatelessWidget {
                         child: Row(
                           children: [
                             AppBoxDecorationImage(
-                              imagePath: getImageUrl(lesson.thumbnail ?? '/default.png'),
+                              imagePath: getUploadedFileUrl(lesson.thumbnail ?? '/defaultimg.png'),
                               width: 60.w,
                               height: 60.w,
                               fit: BoxFit.fill,

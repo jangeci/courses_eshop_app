@@ -104,7 +104,7 @@ class HomeAppBarWidget extends ConsumerWidget implements PreferredSizeWidget {
             data: (data) {
               return GestureDetector(
                 child: AppBoxDecorationImage(
-                  imagePath: getImageUrl(data.avatar ?? ''),
+                  imagePath: getUploadedFileUrl(data.avatar ?? ''),
                 ),
               );
             },
@@ -226,7 +226,7 @@ class CoursesGridWidget extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) => SingleCourseTile(
                   fit: BoxFit.cover,
-                  imagePath: getImageUrl(data?[index].thumbnail ?? ''),
+                  imagePath: getUploadedFileUrl(data?[index].thumbnail ?? ''),
                   courseItem: data![index],
                 ),
               ),
