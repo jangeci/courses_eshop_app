@@ -1,3 +1,4 @@
+import 'package:courses_eshop_app/features/buy_course/view/buy_course_screen.dart';
 import 'package:courses_eshop_app/features/course_detail/view/course_detail_screen.dart';
 import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
 import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
@@ -25,6 +26,7 @@ class AppScreens {
       RouteEntity(HomeScreen.kRoute, const HomeScreen()),
       RouteEntity(CourseDetailScreen.kRoute, const CourseDetailScreen()),
       RouteEntity(LessonDetailScreen.kRoute, const LessonDetailScreen()),
+      RouteEntity(BuyCourseScreen.kRoute, const BuyCourseScreen()),
     ];
   }
 

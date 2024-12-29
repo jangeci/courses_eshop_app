@@ -5,6 +5,7 @@ import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/list_item_widget.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
+import 'package:courses_eshop_app/features/buy_course/view/buy_course_screen.dart';
 import 'package:courses_eshop_app/features/lesson_detail/controller/lesson_detail_controller.dart';
 import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
 import 'package:courses_eshop_app/gen/assets.gen.dart';
@@ -146,6 +147,9 @@ class GoBuyButtonWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 25.w),
       child: AppButtonWidget(
         text: 'Go buy',
+        onTap: () {
+          Navigator.of(context).pushNamed(BuyCourseScreen.kRoute, arguments: {'id': courseItem.id});
+        },
       ),
     );
   }
