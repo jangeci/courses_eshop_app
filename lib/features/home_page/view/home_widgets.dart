@@ -36,7 +36,7 @@ class HomeBannerWidget extends StatelessWidget {
               ref.read(homeScreenBannerDotsProvider.notifier).setIndex(index);
             },
             children: [
-              bannerContainer(img: Assets.icons.art.path),
+              bannerContainer(img: Assets.icons.image1.path),
               bannerContainer(img: Assets.icons.image1.path),
               bannerContainer(img: Assets.icons.image2.path),
             ],
@@ -83,7 +83,15 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text14Normal(Global.storageService.getUserProfile().name ?? '');
+    return Column(
+      children: [
+        const Text11Normal(
+          'User:',
+          color: AppColors.primaryText,
+        ),
+        Text14Normal(Global.storageService.getUserProfile().name ?? ''),
+      ],
+    );
   }
 }
 
@@ -167,7 +175,10 @@ class HomeMenuBarWidget extends StatelessWidget {
                   horizontal: 15.w,
                   vertical: 5.h,
                 ),
-                child: const Text11Normal('All', textAlign: TextAlign.center,),
+                child: const Text11Normal(
+                  'All',
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             Container(

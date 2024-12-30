@@ -7,11 +7,13 @@ import '../gen/assets.gen.dart';
 class AppImageWidget extends StatelessWidget {
   final String? img;
   final double width;
+  final double? height;
 
   const AppImageWidget({
     super.key,
     this.img,
     this.width = 16,
+    this.height,
   });
 
   @override
@@ -19,6 +21,7 @@ class AppImageWidget extends StatelessWidget {
     return Image.asset(
       img ?? Assets.icons.icons8Placeholder.path,
       width: width,
+      height: height,
     );
   }
 }

@@ -1,7 +1,13 @@
+import 'package:courses_eshop_app/features/profile_page/achievement/achievement_screen.dart';
 import 'package:courses_eshop_app/features/buy_course/view/buy_course_screen.dart';
 import 'package:courses_eshop_app/features/course_detail/view/course_detail_screen.dart';
+import 'package:courses_eshop_app/features/profile_page/courses_bought/courses_bought_screen.dart';
+import 'package:courses_eshop_app/features/profile_page/favorites/favorites_screen.dart';
 import 'package:courses_eshop_app/features/home_main/view/home_screen.dart';
 import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
+import 'package:courses_eshop_app/features/payment_detail/payment_detail_screen.dart';
+import 'package:courses_eshop_app/features/profile_page/reminder/reminder_screen.dart';
+import 'package:courses_eshop_app/features/profile_page/settings/settings_screen.dart';
 import 'package:courses_eshop_app/features/sign_in/view/sign_in_screen.dart';
 import 'package:courses_eshop_app/features/sign_up/view/sign_up_screen.dart';
 import 'package:courses_eshop_app/features/welcome/view/welcome_screen.dart';
@@ -27,6 +33,12 @@ class AppScreens {
       RouteEntity(CourseDetailScreen.kRoute, const CourseDetailScreen()),
       RouteEntity(LessonDetailScreen.kRoute, const LessonDetailScreen()),
       RouteEntity(BuyCourseScreen.kRoute, const BuyCourseScreen()),
+      RouteEntity(SettingsScreen.kRoute, const SettingsScreen()),
+      RouteEntity(PaymentDetailScreen.kRoute, const PaymentDetailScreen()),
+      RouteEntity(AchievementScreen.kRoute, const AchievementScreen()),
+      RouteEntity(FavoritesScreen.kRoute, const FavoritesScreen()),
+      RouteEntity(ReminderScreen.kRoute, const ReminderScreen()),
+      RouteEntity(CoursesBoughtScreen.kRoute, const CoursesBoughtScreen()),
     ];
   }
 

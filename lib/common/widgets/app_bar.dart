@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final FontWeight? fontWeight;
 
-  const AppBarWidget({super.key, this.title = ''});
+  const AppBarWidget({
+    super.key,
+    this.title = '',
+    this.fontWeight = FontWeight.w600,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +18,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       title: Text16Normal(
         title,
         color: AppColors.primaryText,
+        fontWeight: fontWeight,
       ),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(10),

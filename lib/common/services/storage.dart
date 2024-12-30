@@ -42,4 +42,9 @@ class StorageService {
     var profileJson = jsonDecode(json);
     return UserProfileModel.fromJson(profileJson);
   }
+
+  Future<bool> remove(String key) async {
+    await _pref.remove(AppConstants.STORAGE_USER_PROFILE_KEY);
+    return true;
+  }
 }
