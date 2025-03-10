@@ -111,8 +111,12 @@ class HomeAppBarWidget extends ConsumerWidget implements PreferredSizeWidget {
           profileState.when(
             data: (data) {
               return GestureDetector(
-                child: AppBoxDecorationImage(
-                  imagePath: getUploadedFileUrl(data.avatar ?? ''),
+                child: Center(
+                  child: AppBoxDecorationImage(
+                    imagePath: getUploadedFileUrl(data.avatar ?? ''),
+                    width: 20,
+                    height: 20,
+                  ),
                 ),
               );
             },

@@ -71,8 +71,10 @@ class AppTextfieldOnlyWidget extends StatelessWidget {
   final bool obscureText;
   final TextEditingController? controller;
   final Function(String val)? onChanged;
+  final Function(String val)? onSubmit;
   final double? width;
   final double? height;
+  final TextInputAction? textInputAction;
 
   const AppTextfieldOnlyWidget({
     super.key,
@@ -83,14 +85,22 @@ class AppTextfieldOnlyWidget extends StatelessWidget {
     this.hint = 'Type in your info',
     this.width = 280,
     this.height = 40,
+    this.textInputAction,
+    this.onSubmit,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height!.h,
       width: width!.w,
       child: TextField(
+        onSubmitted: onSubmit != null
+            ? (val) {
+                onSubmit!(val);
+              }
+            : null,
+        textInputAction: textInputAction,
         controller: controller,
         keyboardType: TextInputType.multiline,
         decoration: InputDecoration(

@@ -82,10 +82,10 @@ class AppBoxDecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
+      width: width.w,
+      height: height.w,
       imageUrl: imagePath,
       imageBuilder: (context, imageProvider) => Container(
-        width: width.w,
-        height: height.w,
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: fit,

@@ -1,4 +1,5 @@
 import 'package:courses_eshop_app/common/api/course_api.dart';
+import 'package:courses_eshop_app/features/search_page/repo/courses_search_repo.dart';
 import 'package:courses_eshop_app/global.dart';
 import 'package:courses_eshop_app/models/course.dart';
 import 'package:courses_eshop_app/models/user.dart';
@@ -37,5 +38,12 @@ class HomeCourseList extends _$HomeCourseList {
   @override
   FutureOr<List<CourseItem>?> build() async {
     return fetchCourseList();
+  }
+
+  Future<void> searchCourses(String search) async {
+    var response = await CoursesSearchRepo.coursesSearch(params: SearchRequestEntity(search: search));
+    if (response?.code == 200) {
+      state = AsyncValue.data(response!.data);
+    }
   }
 }

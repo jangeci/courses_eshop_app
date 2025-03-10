@@ -1,7 +1,7 @@
 class AppConstants {
   //static const String SERVER_API_URL = 'https://ce7f-78-98-70-118.ngrok-free.app/';
 
-  static const String SERVER_API_URL = 'http://localhost:8000/';
+  static const String SERVER_API_URL = 'http://localhost/';
 
   //android
   // static const String SERVER_API_URL = 'http://10.0.2.2:8000/';
@@ -20,6 +20,8 @@ class Endpoints {
   static const String VIDEO_STREAM = 'api/video-stream';
   static const String CHECKOUT = 'api/checkout';
   static const String COURSES_BOUGHT = 'api/courses-bought';
+  static const String COURSES_SEARCH = 'api/search-courses';
+  static const String RECOMMENDED_COURSES = 'api/courses-recommended';
 }
 
 String getUploadedFileUrl(String path) {

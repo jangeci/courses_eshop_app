@@ -39,7 +39,11 @@ class _HomeContentState extends ConsumerState<HomePage> {
                 SizedBox(height: 20.h),
                 const UserName(),
                 SizedBox(height: 20.h),
-                searchWidget(),
+                SearchWidget(
+                  onSubmit: (val) {
+                    ref.read(homeCourseListProvider.notifier).searchCourses(val);
+                  },
+                ),
                 SizedBox(height: 20.h),
                 HomeBannerWidget(ref: ref, controller: _controller),
                 SizedBox(height: 20.h),
