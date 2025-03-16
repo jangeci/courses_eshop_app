@@ -22,6 +22,8 @@ class Endpoints {
   static const String COURSES_BOUGHT = 'api/courses-bought';
   static const String COURSES_SEARCH = 'api/search-courses';
   static const String RECOMMENDED_COURSES = 'api/courses-recommended';
+  static const String AUTHOR_COURSES = 'api/author/courses';
+  static const String AUTHOR_DETAIL = 'api/author';
 }
 
 String getUploadedFileUrl(String path) {

@@ -1,3 +1,4 @@
+import 'package:courses_eshop_app/features/author_page/view/author_screen.dart';
 import 'package:courses_eshop_app/features/profile_page/achievement/achievement_screen.dart';
 import 'package:courses_eshop_app/features/buy_course/view/buy_course_screen.dart';
 import 'package:courses_eshop_app/features/course_detail/view/course_detail_screen.dart';
@@ -39,6 +40,7 @@ class AppScreens {
       RouteEntity(FavoritesScreen.kRoute, const FavoritesScreen()),
       RouteEntity(ReminderScreen.kRoute, const ReminderScreen()),
       RouteEntity(CoursesBoughtScreen.kRoute, const CoursesBoughtScreen()),
+      RouteEntity(AuthorScreen.kRoute, const AuthorScreen()),
     ];
   }
 

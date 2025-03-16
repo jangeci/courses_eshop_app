@@ -171,6 +171,8 @@ HttpRequestError createHttpRequestError(DioException error) {
           return HttpRequestError(code: 400, message: 'Request syntax error');
         case 401:
           return HttpRequestError(code: 401, message: 'Permission denied');
+        case 404:
+          return HttpRequestError(code: 404, message: error.response!.statusMessage ?? 'Not found');
         case 500:
           return HttpRequestError(code: 500, message: 'Internal server error');
       }
@@ -198,6 +200,9 @@ void onError(HttpRequestError error) {
       break;
     case 401:
       print('You are denied to continue');
+      break;
+    case 404:
+      print('Not found');
       break;
     case 500:
       print('Internal server error');

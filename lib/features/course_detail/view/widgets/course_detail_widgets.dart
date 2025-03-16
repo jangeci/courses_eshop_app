@@ -5,6 +5,7 @@ import 'package:courses_eshop_app/common/utils/app_colors.dart';
 import 'package:courses_eshop_app/common/utils/constants.dart';
 import 'package:courses_eshop_app/common/widgets/list_item_widget.dart';
 import 'package:courses_eshop_app/common/widgets/text_widgets.dart';
+import 'package:courses_eshop_app/features/author_page/view/author_screen.dart';
 import 'package:courses_eshop_app/features/buy_course/view/buy_course_screen.dart';
 import 'package:courses_eshop_app/features/lesson_detail/controller/lesson_detail_controller.dart';
 import 'package:courses_eshop_app/features/lesson_detail/view/lesson_detail_screen.dart';
@@ -52,7 +53,11 @@ class CourseDetailInfoRowWidget extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(AuthorScreen.kRoute, arguments: {
+                "token": courseItem.user_token,
+              });
+            },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
               decoration: appBoxDecoration(radius: 7),
